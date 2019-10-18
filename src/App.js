@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState,} from 'react';
 import axios from 'axios';
 import logo from './logo.svg';
 import Info from './components/Info';
@@ -12,7 +12,6 @@ function App() {
   // })
   const [search, setSearch] = useState("");
   const [items, setItems] = useState([]);
-  const [submit, setSubmit] = useState(false);
   
   const handleChange = (e) =>{
     e.preventDefault();
@@ -30,10 +29,8 @@ function App() {
     // setStates({
     //   ...states,
     //   items: response.data,
-    //   submit: true
     // });
     setItems(response.data.items);
-    setSubmit(true);
     console.log(response.data);
   }
 
@@ -41,7 +38,7 @@ function App() {
     <div className="App">
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Que deseas buscar?" onChange={handleChange}/>
-        <button>Search</button>
+        <button className="vcs-btn">Search</button>
         {items ? <Info items={items}/>: ''}
         {/* {console.log(items)} */}
       </form>
