@@ -1,11 +1,15 @@
 import React,{useState} from 'react';
 
-function Info(){
+function Info(props){
 
-  
-
+    const x = props.items.map(item =>(
+        <div key={item.id}>
+            <label>{item.name}</label>
+        </div>
+    ));
+    
     return(
-        <div></div>
+        <div>{x}</div>
         
     )
 }
