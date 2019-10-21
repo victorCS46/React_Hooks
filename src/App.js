@@ -5,32 +5,38 @@ import Info from './components/Info';
 import './App.css';
 
 function App() {
-  // const [states, setStates] = useState({
-  //   search: '',
-  //   items: [],
-  //   submit: false,
-  // })
+
   const [search, setSearch] = useState("");
   const [items, setItems] = useState([]);
+  let [inc, setInc] = useState(6);
   
   const handleChange = (e) =>{
     e.preventDefault();
-    // setStates({
-    //   ...states,
-    //   search: e.target.value
-    // });
     setSearch(e.target.value);
     // console.log(search);
   } 
 
    const handleSubmit = async (e) =>{
     e.preventDefault();
-    const response = await axios.get(`https://api.github.com/search/repositories?q=${/*states.*/search}&per_page=6`);
-    // setStates({
-    //   ...states,
-    //   items: response.data,
-    // });
+    if(inc > 6){
+      setInc(inc = 6);
+    }
+    const response = await axios.get(`https://api.github.com/search/repositories?q=${search}&per_page=${inc}`);
     setItems(response.data.items);
+    document.getElementById("load").style.display = "block";
+    console.log(response.data);
+  }
+
+  const loadMore = async (e) =>{
+    e.preventDefault(e);
+    setInc(inc += 6);
+    if(inc >= 60){
+      setInc(inc = 60)
+      document.getElementById("load").style.display = "none";
+    }
+    const response = await axios.get(`https://api.github.com/search/repositories?q=${search}&per_page=${inc}`);
+    setItems(response.data.items);
+    console.log(inc);
     console.log(response.data);
   }
 
@@ -40,7 +46,9 @@ function App() {
         <input type="text" placeholder="Que deseas buscar?" onChange={handleChange}/>
         <button className="vcs-btn">Search</button>
         {items ? <Info items={items}/>: ''}
-        {/* {console.log(items)} */}
+      </form>
+      <form onSubmit={loadMore}>
+        <center><button className="vcs-btn" id="load" type="submit">Load More...</button></center>    
       </form>
     </div>
   );
