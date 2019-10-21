@@ -21,6 +21,10 @@
   color: #09d3ac;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .div-img{
   background-color: white;
 }
@@ -28,8 +32,16 @@
 .vcs-img{
   max-width: 32%;
   height: 180px;
+  border-radius: 50%;
   float: left;
   background-color: white;
+  -webkit-transition: -webkit-transform 0.7s ease-in-out;
+          transition:         transform 0.7s ease-in-out;
+}
+
+.vcs-img:hover{
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
 }
 
 .vcs-btn:hover {
@@ -76,6 +88,7 @@ label{
   border: 1px solid black;
   width: 640px;
   height: 180px;
+  border-radius: 100px;
   margin: 33px;
   margin-left: 73px;
   overflow: hidden;

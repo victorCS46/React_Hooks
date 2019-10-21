@@ -6,7 +6,7 @@ function Info(props){
         <div key={item.id}>
             <div className="div-card">
                 <div className="div-img"><img className="vcs-img" alt="No img" src={item.owner.avatar_url}></img></div>
-                <div><label>{item.full_name}</label></div>
+                <div><label><b>{item.full_name}</b></label></div>
                 <div><label className="vcs-language">{item.language}</label></div>
                 <div className="vcs-description">{item.description}</div>
                 <div>
