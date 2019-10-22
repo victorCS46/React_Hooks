@@ -1,4 +1,6 @@
 import React from 'react';
+import { Route, Link} from 'react-router-dom';
+import Contributors from './Contributors';
 
 function Info(props){
 
@@ -12,7 +14,8 @@ function Info(props){
                 <div>
                     <label className="vcs-issues">Issues: {item.open_issues}</label>
                     <label className="vcs-stars">Stars: {item.stargazers_count}</label>
-                    <label className="vcs-contributor">Top Contributors</label>
+                    <Link to={{ pathname: 'components/contributors/', state: { repo: item.contributors_url } }} className="vcs-contributor">Top Contributors</Link>
+                    <Route path="/components/contributors" component={Contributors} />
                 </div>
                 <div className="vcs-repo"><a href={item.html_url} className="vcs-a">Go to repository</a></div>
             </div>
