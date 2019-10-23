@@ -47,7 +47,7 @@ function App() {
         </div>
       </div>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Que deseas buscar?" onChange={handleChange}/>
+        <input type="text" placeholder="Search Repository" onChange={handleChange}/>
         <button style={search ? {} : {display:'none'}} className="vcs-btn">Search</button>
         {items ? <Info items={items}/>: ''}
       </form>
