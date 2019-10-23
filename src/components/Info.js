@@ -24,7 +24,6 @@ function Info(props){
     
     return(
         <div className="div_container">{x}</div>
-        
     )
 }
 export default Info;

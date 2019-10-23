@@ -6,6 +6,12 @@
   height: 40vmin;
 }
 
+.App-routing{
+  text-align: center;
+  background-color:#081a35;
+  margin: auto;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -19,6 +25,50 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.vcs-route{
+  color: white;
+  margin-right: 42px;
+}
+
+.header{
+  padding: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+  background: #081a35;
+  color: white;
+  font-size: 15px;
+}
+
+@keyframes spin {
+  from{
+    transform: rotate(0deg);
+    moz-transform: rotate(0deg);
+    ms-transform: rotate(0deg); 
+  }
+  to{
+    transform: rotate(360deg);
+    moz-transform: rotate(360deg); 
+    ms-transform: rotate(360deg);
+  }
+ }
+ @-webkit-keyframes spin{
+  from{-webkit-transform: rotate(0deg);}
+  to{-webkit-transform: rotate(360deg);}
+ }
+
+#react_icon{
+  width: 75px;
+  height: 75px;
+  animation-name: spin;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 5s;
+  -webkit-animation-name: spin;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 5s;
 }
 
 html {
@@ -109,6 +159,7 @@ label{
   -webkit-transform:rotate(360deg);
   -moz-transform:rotate(360deg);
   -o-transform:rotate(360deg);
+    transform: rotate(360deg);
 }
 
 .div-card:hover{
@@ -205,4 +256,24 @@ label{
   color: white;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.vcs-contributor_div{
+  float: none;
+  border: 1px solid black;
+  width: 250px;
+  height: 50px;
+  margin-top: 16px;
+  background-color: azure;
+  transition: all 0.5s ease 0s;
+}
+
+.vcs-con_name{
+  background-color: azure;
+}
+
+.vcs-con_img{
+  width: 50px;
+  height: 100%;
+  float: left;
 }

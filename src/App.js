@@ -13,10 +13,9 @@ function App() {
   const handleChange = (e) =>{
     e.preventDefault();
     setSearch(e.target.value);
-    // console.log(search);
   } 
 
-   const handleSubmit = async (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
     if(inc > 6){
       setInc(inc = 6);
@@ -24,11 +23,10 @@ function App() {
     const response = await axios.get(`https://api.github.com/search/repositories?q=${search}&per_page=${inc}`);
     setItems(response.data.items);
     document.getElementById("load").style.display = "block";
-    console.log(response.data);
   }
 
   const loadMore = async (e) =>{
-    e.preventDefault(e);
+    e.preventDefault();
     setInc(inc += 6);
     if(inc >= 60){
       setInc(inc = 60)
@@ -36,15 +34,21 @@ function App() {
     }
     const response = await axios.get(`https://api.github.com/search/repositories?q=${search}&per_page=${inc}`);
     setItems(response.data.items);
-    console.log(inc);
-    console.log(response.data);
+    window.scrollTo(0,document.body.scrollHeight);
   }
 
   return (
     <div className="App">
+      <div>
+        <div className="header">
+          <img id="react_icon" src="logo192.png" alt="React?"></img>
+          <h1>Hooks Test</h1>
+          <span>Github repositories search bar</span>
+        </div>
+      </div>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Que deseas buscar?" onChange={handleChange}/>
-        <button className="vcs-btn">Search</button>
+        <button style={search ? {} : {display:'none'}} className="vcs-btn">Search</button>
         {items ? <Info items={items}/>: ''}
       </form>
       <form onSubmit={loadMore}>
